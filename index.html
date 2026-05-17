@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カンジクエスト — 漢検 3〜10 級対応の漢字学習アプリ</title>
+<meta name="description" content="漢検 3〜10 級に対応した児童・小中学生向けの漢字学習アプリ。10 種類のレッスン形式・SRS 復習・ストリーク・図鑑機能で楽しく続けられる iPhone / iPad アプリ。">
+<meta name="theme-color" content="#2982ED">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/icon-256.png">
+<link rel="apple-touch-icon" href="assets/icon-256.png">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hori2-t.github.io/kanjiquest/">
+<meta property="og:title" content="カンジクエスト — 漢検 3〜10 級対応の漢字学習アプリ">
+<meta property="og:description" content="10 種類のレッスン形式と SRS 復習で、漢字学習を毎日の習慣に。漢検 3〜10 級対応。">
+<meta property="og:image" content="https://hori2-t.github.io/kanjiquest/assets/icon-512.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="カンジクエスト — 漢字学習アプリ">
+<meta name="twitter:description" content="漢検 3〜10 級対応・10 種類のレッスン形式・SRS 復習">
+<meta name="twitter:image" content="https://hori2-t.github.io/kanjiquest/assets/icon-512.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "カンジクエスト",
+  "operatingSystem": "iOS 17+",
+  "applicationCategory": "EducationalApplication",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"},
+  "description": "漢検 3〜10 級に対応した児童・小中学生向けの漢字学習アプリ。10 種類のレッスン形式と SRS 復習で楽しく続けられる。",
+  "image": "https://hori2-t.github.io/kanjiquest/assets/icon-512.png",
+  "url": "https://hori2-t.github.io/kanjiquest/"
+}
+</script>
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-elev: #f7fafd;
+    --bg-card: #ffffff;
+    --bg-tint: #eef5fe;
+    --text: #1a2030;
+    --text-dim: #5b6577;
+    --text-mute: #8a93a3;
+    --primary: #2982ED;
+    --primary-deep: #1b62b8;
+    --primary-soft: #e8f1fd;
+    --accent: #FDB036;
+    --accent-soft: #fff3dc;
+    --success: #33B56E;
+    --danger: #ED4D4D;
+    --border: rgba(41, 130, 237, 0.14);
+    --border-strong: rgba(41, 130, 237, 0.28);
+    --radius: 18px;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-soft: 0 12px 32px -16px rgba(41, 130, 237, 0.25);
+    --shadow-lift: 0 24px 60px -20px rgba(41, 130, 237, 0.35);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    line-height: 1.7;
+    font-feature-settings: "palt";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(60% 50% at 85% -10%, rgba(253, 176, 54, 0.18), transparent 70%),
+      radial-gradient(55% 60% at -5% 70%, rgba(41, 130, 237, 0.10), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  main { position: relative; z-index: 1; }
+
+  /* Layout */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 48px);
+  }
+
+  /* Hero */
+  .hero {
+    padding: clamp(72px, 14vw, 140px) 0 clamp(60px, 10vw, 100px);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: center;
+  }
+  .hero-text { max-width: 600px; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    background: var(--primary-soft);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(253, 176, 54, 0.6);
+  }
+  h1.hero-title {
+    font-size: clamp(38px, 6.5vw, 70px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    margin: 0 0 24px;
+    color: var(--text);
+  }
+  h1.hero-title .gradient {
+    background: linear-gradient(120deg, var(--primary) 10%, var(--accent) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-lead {
+    font-size: clamp(16px, 1.5vw, 19px);
+    color: var(--text-dim);
+    margin: 0 0 36px;
+    max-width: 540px;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .badge-appstore {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 24px;
+    background: var(--text);
+    color: #ffffff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+  .badge-appstore:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+  }
+  .badge-appstore.disabled {
+    opacity: 0.55;
+    cursor: default;
+    pointer-events: none;
+  }
+  .badge-appstore svg { width: 28px; height: 28px; flex-shrink: 0; }
+  .badge-appstore-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .badge-appstore-text small { font-size: 11px; opacity: 0.75; font-weight: 500; }
+  .badge-appstore-text strong { font-size: 17px; }
+  .pill-status {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+  }
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .hero-icon {
+    position: absolute;
+    inset: 12%;
+    border-radius: 28%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-size: clamp(80px, 14vw, 140px);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    box-shadow:
+      0 40px 100px -20px rgba(41, 130, 237, 0.55),
+      0 0 0 1px rgba(41, 130, 237, 0.15);
+  }
+  .hero-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), transparent 55%);
+    pointer-events: none;
+  }
+  .hero-orbit {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px dashed rgba(41, 130, 237, 0.28);
+    animation: rotate 60s linear infinite;
+  }
+  .hero-orbit::after {
+    content: "";
+    position: absolute;
+    top: -5px; left: 50%;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateX(-50%);
+    box-shadow: 0 0 16px rgba(253, 176, 54, 0.7);
+  }
+  @keyframes rotate { to { transform: rotate(360deg); } }
+
+  /* Stats strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: clamp(60px, 10vw, 100px);
+    box-shadow: var(--shadow-soft);
+  }
+  .stat-item {
+    background: var(--bg-card);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .stat-num.accent {
+    background: linear-gradient(135deg, var(--accent), #e6921a);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  /* Sections */
+  section { padding: clamp(60px, 10vw, 100px) 0; }
+  .section-head {
+    margin-bottom: clamp(40px, 6vw, 64px);
+    max-width: 720px;
+  }
+  .section-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin: 0 0 12px;
+    font-weight: 700;
+  }
+  .section-title {
+    font-size: clamp(28px, 4.5vw, 44px);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    margin: 0 0 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .section-lead {
+    font-size: 16px;
+    color: var(--text-dim);
+    margin: 0;
+  }
+
+  /* Features */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .feature {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-soft);
+  }
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--primary-soft);
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    color: var(--primary);
+    position: relative;
+    z-index: 1;
+  }
+  .feature-icon.accent {
+    background: var(--accent-soft);
+    color: #c47d10;
+  }
+  .feature-icon svg { width: 24px; height: 24px; }
+  .feature h3 {
+    font-size: 19px;
+    margin: 0 0 10px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .feature p {
+    font-size: 14.5px;
+    color: var(--text-dim);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Lessons grid */
+  .lessons {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: clamp(32px, 5vw, 56px);
+  }
+  .lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 32px;
+  }
+  .lesson-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.2s var(--ease);
+  }
+  .lesson-item:hover { border-color: var(--border-strong); }
+  .lesson-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .lesson-item:nth-child(even) .lesson-num { background: var(--accent); }
+  .lesson-name {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Legal links */
+  .legal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .legal-card {
+    display: block;
+    padding: 28px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+  .legal-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+  .legal-card h3 {
+    font-size: 18px;
+    margin: 0 0 6px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .legal-card p {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin: 0;
+  }
+  .legal-card .arrow {
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 0.2s var(--ease);
+  }
+  .legal-card:hover .arrow { transform: translateX(4px); }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    color: var(--text-mute);
+    font-size: 13px;
+    text-align: center;
+  }
+  footer a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; text-align: left; }
+    .hero-visual { max-width: 220px; margin: 0 0 16px; }
+    .legal { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orbit { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="container hero">
+    <div class="hero-text">
+      <span class="eyebrow">Coming Soon</span>
+      <h1 class="hero-title">
+        漢字を、<br>
+        <span class="gradient">冒険にしよう。</span>
+      </h1>
+      <p class="hero-lead">
+        漢検 3 級から 10 級まで完全対応。10 種類のレッスン形式と SRS 復習で、
+        小学生・中学生の漢字学習を毎日の習慣に変える iPhone / iPad アプリ。
+      </p>
+      <div class="cta-row">
+        <a class="badge-appstore disabled" href="https://apps.apple.com/jp/app/kanji-quest/id0000000000" aria-disabled="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          <span class="badge-appstore-text">
+            <small>準備中</small>
+            <strong>App Store で近日公開</strong>
+          </span>
+        </a>
+        <span class="pill-status">iOS 17+ ・ 無料ダウンロード（IAP あり）</span>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-orbit"></div>
+      <div class="hero-icon">漢</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-num">10<small style="font-size:0.5em;font-weight:600;">種</small></div>
+        <div class="stat-label">レッスン形式</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num accent">3〜10<small style="font-size:0.5em;font-weight:600;">級</small></div>
+        <div class="stat-label">漢検対応範囲</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">SRS</div>
+        <div class="stat-label">間隔反復復習</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num accent">100%</div>
+        <div class="stat-label">端末内処理</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">Features</p>
+        <h2 class="section-title">続けたくなる、漢字学習の体験。</h2>
+        <p class="section-lead">ゲーム感覚で楽しく、でも学習効果はしっかり。子どもが自分から開きたくなる漢字アプリを目指して設計しました。</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 12l4-4 4 4 5-5"/></svg>
+          </div>
+          <h3>10 種類のレッスン</h3>
+          <p>読み・書き・部首・熟語構成・四字熟語・ペアマッチなど、飽きずに続けられる多彩なクエスト形式。</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon accent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><polyline points="3 4 3 12 11 12"/></svg>
+          </div>
+          <h3>SRS 復習システム</h3>
+          <p>苦手な漢字ほど頻繁に出題する間隔反復学習。忘れる前に必ず復習するから、確実に定着する。</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+          </div>
+          <h3>ストリーク & XP</h3>
+          <p>毎日の学習で連続記録（ストリーク）と経験値が貯まる。今日もやらなきゃ、と思わせる仕組み。</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon accent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h3>漢字図鑑</h3>
+          <p>学習した漢字をコレクション。読み・部首・例文・成り立ちまで一覧で確認できる、子どもの宝物。</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          </div>
+          <h3>手書き認識</h3>
+          <p>Apple Pencil または指で漢字を書いて回答。PencilKit と Apple Vision で端末内 OCR、書く力を本物に。</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon accent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>こどもプライバシー</h3>
+          <p>学習データはすべて端末内のみに保存。サーバー送信なし。広告は児童向け設定（TFCD）で安全に配信。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="lessons">
+    <div class="container">
+      <div class="lessons">
+        <div class="section-head" style="margin-bottom:0;">
+          <p class="section-eyebrow">Lesson Types</p>
+          <h2 class="section-title">10 種類のクエストで、漢字を多角的に。</h2>
+          <p class="section-lead">読みだけ・書きだけでは身につかない。漢字の意味・構成・使い方を、さまざまな角度から学べる学習形式。</p>
+        </div>
+        <div class="lesson-grid">
+          <div class="lesson-item"><span class="lesson-num">1</span><span class="lesson-name">読みクエスト</span></div>
+          <div class="lesson-item"><span class="lesson-num">2</span><span class="lesson-name">書きクエスト</span></div>
+          <div class="lesson-item"><span class="lesson-num">3</span><span class="lesson-name">部首クエスト</span></div>
+          <div class="lesson-item"><span class="lesson-num">4</span><span class="lesson-name">熟語構成クエスト</span></div>
+          <div class="lesson-item"><span class="lesson-num">5</span><span class="lesson-name">四字熟語クエスト</span></div>
+          <div class="lesson-item"><span class="lesson-num">6</span><span class="lesson-name">対義語・類義語</span></div>
+          <div class="lesson-item"><span class="lesson-num">7</span><span class="lesson-name">送り仮名クエスト</span></div>
+          <div class="lesson-item"><span class="lesson-num">8</span><span class="lesson-name">同音異字クエスト</span></div>
+          <div class="lesson-item"><span class="lesson-num">9</span><span class="lesson-name">ペアマッチング</span></div>
+          <div class="lesson-item"><span class="lesson-num">10</span><span class="lesson-name">総合演習</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="legal">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow">Legal</p>
+        <h2 class="section-title">取り扱いについて</h2>
+        <p class="section-lead">本アプリの利用条件とデータ取り扱い方針。保護者の方は事前にご確認ください。</p>
+      </div>
+      <div class="legal">
+        <a class="legal-card" href="privacy.html">
+          <h3>プライバシーポリシー <span class="arrow">→</span></h3>
+          <p>アプリが収集するデータと取り扱い方針について</p>
+        </a>
+        <a class="legal-card" href="terms.html">
+          <h3>利用規約 <span class="arrow">→</span></h3>
+          <p>本アプリの利用条件・課金・免責事項について</p>
+        </a>
+      </div>
+      <p style="margin-top:32px;text-align:center;color:var(--text-mute);font-size:14px;">
+        お問い合わせ: <a href="mailto:hori2.apps@gmail.com" style="color:var(--primary);text-decoration:none;border-bottom:1px dotted var(--primary);">hori2.apps@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 hori2 ・ Built with care for young learners.
+    </div>
+  </footer>
+</main>
+</body>
+</html>

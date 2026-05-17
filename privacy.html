@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー — カンジクエスト</title>
+<meta name="description" content="カンジクエスト (KanjiQuest) のプライバシーポリシー。児童・小中学生向け漢字学習アプリのデータ取り扱い方針について。">
+<meta name="theme-color" content="#2982ED">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/icon-256.png">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-elev: #f7fafd;
+    --bg-card: #ffffff;
+    --bg-tint: #eef5fe;
+    --text: #1a2030;
+    --text-dim: #5b6577;
+    --text-mute: #8a93a3;
+    --primary: #2982ED;
+    --primary-deep: #1b62b8;
+    --accent: #FDB036;
+    --border: rgba(41, 130, 237, 0.14);
+    --border-strong: rgba(41, 130, 237, 0.28);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-feature-settings: "palt";
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(60% 50% at 85% -5%, rgba(253, 176, 54, 0.12), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(40px, 8vw, 80px) clamp(20px, 5vw, 40px);
+  }
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 32px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-tint);
+    transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+  }
+  .back:hover {
+    border-color: var(--border-strong);
+    background: #ddebfb;
+  }
+  h1 {
+    font-size: clamp(32px, 5vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+    background: linear-gradient(120deg, var(--primary) 10%, var(--accent) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+  }
+  .meta {
+    color: var(--text-mute);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-size: 21px;
+    margin-top: 56px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    color: var(--text);
+  }
+  h3 {
+    font-size: 17px;
+    margin-top: 28px;
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  p { margin: 12px 0 18px; color: var(--text-dim); }
+  p strong { color: var(--text); font-weight: 700; }
+  ul { padding-left: 24px; color: var(--text-dim); }
+  li { margin: 8px 0; }
+  li::marker { color: var(--primary); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  th, td {
+    text-align: left;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  tr:last-child td { border-bottom: none; }
+  th {
+    background: var(--bg-tint);
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  tbody tr:hover td { background: rgba(41, 130, 237, 0.03); }
+  .notice {
+    background: #fff8e8;
+    border: 1px solid rgba(253, 176, 54, 0.35);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    color: #6b4d10;
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+  .notice strong { color: #4a3608; }
+  .contact a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary);
+    transition: border-color 0.2s var(--ease);
+  }
+  .contact a:hover { border-color: var(--primary-deep); }
+  footer {
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    color: var(--text-mute);
+    font-size: 13px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back">← トップへ戻る</a>
+
+    <h1>プライバシーポリシー</h1>
+    <p class="meta">最終更新日: 2026年5月17日</p>
+
+    <p>
+      hori2（以下「開発者」）は、本アプリ「カンジクエスト (KanjiQuest)」（以下「本アプリ」）における利用者およびその保護者の方々のプライバシー保護を最重要事項と考えています。本ポリシーは、本アプリが取り扱う情報の種類・目的・保護方針を明確にするものです。
+    </p>
+
+    <div class="notice">
+      <strong>本アプリについて</strong><br>
+      本アプリは漢字検定 3 級〜10 級に対応した学習アプリで、児童（小学生〜中学生）の利用を想定して設計されています。本ポリシーは、児童のプライバシー保護に関する国内外の法令（個人情報保護法、米国 COPPA、EU GDPR 等）の精神を尊重して策定しています。
+    </div>
+
+    <h2>1. 収集する情報</h2>
+
+    <p>本アプリは、以下のいずれの個人情報も収集しません。</p>
+
+    <table>
+      <thead>
+        <tr><th>情報の種類</th><th>収集</th><th>備考</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>氏名・メールアドレス・電話番号</td><td>収集しない</td><td>アカウント機能なし</td></tr>
+        <tr><td>位置情報</td><td>収集しない</td><td>位置情報 API を使用していません</td></tr>
+        <tr><td>連絡先・写真・カレンダー</td><td>収集しない</td><td>該当 API を使用していません</td></tr>
+        <tr><td>マイク・カメラ</td><td>収集しない</td><td>該当 API を使用していません</td></tr>
+        <tr><td>健康データ（HealthKit）</td><td>収集しない</td><td>HealthKit 非使用</td></tr>
+        <tr><td>クラッシュレポート・解析データ</td><td>収集しない</td><td>非収集</td></tr>
+        <tr><td>手書きデータ</td><td>収集しない</td><td>端末内 OCR で処理後すぐ破棄</td></tr>
+      </tbody>
+    </table>
+
+    <h2>2. 端末内に保存されるデータ</h2>
+
+    <p>本アプリは、利用者の学習体験向上のため、以下のデータを<strong>端末内のみ</strong>に保存します。これらのデータは外部サーバーへ送信されることはありません。</p>
+
+    <ul>
+      <li>学習履歴（出題された漢字、正誤、回答時間、復習スケジュール）</li>
+      <li>進捗データ（XP、レベル、ストリーク、達成バッジ）</li>
+      <li>漢字図鑑のコレクション情報</li>
+      <li>購入履歴（買い切りコースの所有状況）</li>
+      <li>アプリ設定（通知時刻、表示設定、難易度、目標セッション数など）</li>
+    </ul>
+
+    <p>これらのデータは iOS の標準保存領域（SwiftData / 端末内 SQLite および UserDefaults）に保存され、本アプリを削除すると同時に完全に消去されます。</p>
+
+    <h2>3. Sign in with Apple について</h2>
+
+    <p>
+      本アプリは将来的なデータ同期機能のため、Sign in with Apple をオプションで提供する場合があります。サインインを行った場合でも、Apple から提供されるユーザー識別子は<strong>端末内のみに保存</strong>され、開発者のサーバーへは送信されません。将来 iCloud 同期を実装する際は、本ポリシーを改定したうえで、明示的にお知らせします。
+    </p>
+
+    <h2>4. 手書き認識について</h2>
+
+    <p>
+      本アプリの書きクエストでは、Apple Pencil または指で漢字を書いて回答できます。手書きデータの認識処理には Apple の <strong>PencilKit</strong> と <strong>Vision フレームワーク</strong>（端末内 OCR）を使用し、すべての処理は端末内で完結します。手書きデータはサーバーへ送信されることはなく、認識処理後ただちに破棄されます。
+    </p>
+
+    <h2>5. 通知について</h2>
+
+    <p>
+      本アプリは、利用者が通知機能を ON にした場合に限り、以下のローカル通知を送信します。通知はすべて端末内で完結し、外部サーバーを経由しません。
+    </p>
+    <ul>
+      <li>デイリーリマインダー（学習の習慣化サポート）</li>
+      <li>ラストコール通知（ストリーク維持のためのリマインド）</li>
+      <li>昼休み通知（任意の時間帯設定）</li>
+    </ul>
+    <p>利用者はいつでもアプリ設定または iOS の設定アプリから ON/OFF を切り替えられます。</p>
+
+    <h2>6. アプリ内課金（IAP）について</h2>
+
+    <p>
+      本アプリでは、漢検級別の学習コンテンツを提供する<strong>買い切り型のアプリ内課金（7 種類: 8〜3 級コース、およびバンドル）</strong>を提供しています。
+    </p>
+    <ul>
+      <li>購入処理はすべて Apple の App Store サーバーを経由して行われ、本アプリがクレジットカード情報等を取得することはありません。</li>
+      <li>本アプリは購入状況の確認のため Apple が提供する <code>StoreKit 2</code> の <code>Transaction.currentEntitlements</code> API のみを参照します。</li>
+      <li>過去の購入を別端末で復元する「購入を復元」機能を提供します。</li>
+    </ul>
+
+    <h2>7. 広告について</h2>
+
+    <p>
+      本アプリは無料版において、Google AdMob による広告を表示する場合があります。本アプリは<strong>児童向けアプリ</strong>のため、以下の方針で広告を運用します。
+    </p>
+    <ul>
+      <li><strong>child-directed treatment (TFCD) フラグを ON</strong> に設定し、児童向けに適切な広告のみを配信します。</li>
+      <li><strong>SKAdNetwork ベースの非個人化広告のみ</strong>を表示し、利用者の行動を追跡するパーソナライズ広告は配信しません。</li>
+      <li>広告識別子（IDFA）の取得や App Tracking Transparency（ATT）の許可要求は行いません。</li>
+      <li>有料コース購入後は広告が非表示になる場合があります。</li>
+    </ul>
+
+    <h2>8. 子供のプライバシー（COPPA / 個人情報保護法児童条項）</h2>
+
+    <p>
+      本アプリは児童の利用を想定しているため、以下の特別な配慮を行っています。
+    </p>
+    <ul>
+      <li>13 歳未満の利用者からも、上記第 1 項に記載のとおり個人情報を一切収集しません。</li>
+      <li>外部サービスへのデータ送信は、上記第 7 項の TFCD 準拠広告を除いて一切行いません。</li>
+      <li>ソーシャル機能（SNS 連携、チャット、ユーザー間通信等）は一切実装していません。</li>
+      <li>外部リンク（本ポリシーや利用規約の連絡先メール等）は最小限とし、利用に保護者の判断が必要なものに限定します。</li>
+    </ul>
+    <p>
+      保護者の方からのご要望（アプリの利用状況の確認、データに関するお問い合わせ等）は、第 11 項の連絡先までお寄せください。
+    </p>
+
+    <h2>9. 第三者提供</h2>
+
+    <p>
+      本アプリは、第 7 項に記載した TFCD 準拠の広告配信を除き、利用者の情報を第三者へ提供することはありません。法令に基づく開示要請がある場合のみ、関連する法令に従って対応します。
+    </p>
+
+    <h2>10. 本ポリシーの変更</h2>
+
+    <p>
+      本ポリシーは、法令の改正やサービス内容の変更に応じて改定されることがあります。重要な変更がある場合は、本ページおよびアプリ内で告知します。
+    </p>
+
+    <h2 id="contact">11. お問い合わせ</h2>
+
+    <p class="contact">
+      本ポリシーに関するご質問・保護者の方からのお問い合わせは、以下の連絡先までお寄せください。<br>
+      メール: <a href="mailto:hori2.apps@gmail.com">hori2.apps@gmail.com</a>
+    </p>
+
+    <footer>
+      © 2026 hori2. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
